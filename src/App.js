@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Modal, Paper, Typography } from '@material-ui/core';
+import { Modal, Paper, Typography} from '@material-ui/core';
 import AppBar from './components/PrimarySearchAppBar';
 import MovieTile from './components/MovieTile';
 import Stars from './components/Stars';
+import PersistentDrawerLeft from './components/PersistentDrawerLeft';
 
 
 class App extends Component {
@@ -13,10 +14,13 @@ class App extends Component {
       movie_array: [],
       keyword: '',
       open: false,
+      drawer:false,
       modalMovie: {}
     };
     this.searchBar = this.searchBar.bind(this);
     this.changeModal = this.changeModal.bind(this);
+    this.buttonDrawer = this.buttonDrawer.bind(this);
+    this.closeDrawer = this.closeDrawer.bind(this);
   }
 
   searchBar(value) {
@@ -220,10 +224,20 @@ class App extends Component {
     }
   }
 
+  buttonDrawer(){
+    this.setState({drawer: !this.state.drawer});
+    console.log(this.state);
+  }
+
+  closeDrawer(){
+    this.setState({drawer: false});
+  }
+
   render() {
     return (
       <div className='App'>
-        <AppBar searchBar={this.searchBar} />
+        <AppBar searchBar={this.searchBar} buttonDrawer={this.buttonDrawer} />
+        <PersistentDrawerLeft drawer={this.state.drawer} closeDrawer={this.closeDrawer} />
         {this.renderTitle()}
         {this.renderAllResults()}
         {this.renderModal()}
