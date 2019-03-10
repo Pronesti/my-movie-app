@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import CircularProgress from '@material-ui/core/CircularProgress';
-import SvgIcon from '@material-ui/core/SvgIcon';
 
 
 export default class MovieTile extends Component {
@@ -28,13 +27,11 @@ export default class MovieTile extends Component {
         return <CircularProgress />
       }
       if (!this.props.url){
-        return <img src="https://www.classicposters.com/images/nopicture.gif" style={styles.NoImage} />
+        return <img src="https://www.classicposters.com/images/nopicture.gif" style={styles.NoImage} alt='' />
       }
     return (
-      <div style={styles.MovieTile}>
-      <a href={''}>
+      <div style={styles.MovieTile} onClick={() => this.props.changeModal(this.props.id)}>
         <img src={'https://image.tmdb.org/t/p/w185_and_h278_bestv2/' + this.props.url} alt={this.props.title} />
-      </a>
       </div>
     )
   }
