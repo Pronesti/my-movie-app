@@ -20,7 +20,7 @@ import MoreIcon from '@material-ui/icons/MoreVert';
 const styles = theme => ({
   root: {
     width: '100%',
-    marginBottom: '2%'
+    marginBottom: '2%',
   },
   grow: {
     flexGrow: 1,
@@ -58,6 +58,7 @@ const styles = theme => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    color: 'black'
   },
   inputRoot: {
     color: 'inherit',
@@ -70,6 +71,8 @@ const styles = theme => ({
     paddingLeft: theme.spacing.unit * 10,
     transition: theme.transitions.create('width'),
     width: '100%',
+    backgroundColor: 'lightgrey',
+    color: 'black',
     [theme.breakpoints.up('md')]: {
       width: 200,
     },
@@ -161,10 +164,14 @@ class PrimarySearchAppBar extends React.Component {
         </MenuItem>
       </Menu>
     );
-
+      const myStyle = {
+        appBar : {
+          backgroundColor: 'black',
+        }
+      }
     return (
       <div className={classes.root}>
-        <AppBar position="static">
+        <AppBar position="static" style={myStyle.appBar}>
           <Toolbar>
             <IconButton className={classes.menuButton} color="inherit" aria-label="Open drawer">
               <MenuIcon />

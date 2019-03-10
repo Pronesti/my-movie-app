@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './App.css';
 import { Modal, Paper, Typography } from '@material-ui/core';
 import AppBar from './components/PrimarySearchAppBar';
 import MovieTile from './components/MovieTile';
@@ -21,11 +20,16 @@ class App extends Component {
   }
 
   searchBar(value) {
-    setTimeout(() => {
+    if(value === ""){
+      this.fetchPopularMovies();
       this.setState({
-        keyword: value
+        keyword: ""
       });
-    }, 1000);
+    }else{
+        this.setState({
+          keyword: value
+        });
+    }
   }
 
   componentDidMount() {
@@ -98,7 +102,7 @@ class App extends Component {
   }
 
   renderTitle(){
-    if(this.state.keyword === ""){
+    if(this.state.keyword === "" || this.state.keyword === " "){
       return (<Typography variant='h5' component='h3' >
       Popular Movies
     </Typography>)
@@ -211,13 +215,12 @@ class App extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (prevState.keyword !== this.state.keyword) {
+    if (prevState.keyword !== this.state.keyword && this.state.keyword !== "") {
       this.fetchThisMovie(this.state.keyword);
     }
   }
 
   render() {
-    console.log(this.state.modalMovie);
     return (
       <div className='App'>
         <AppBar searchBar={this.searchBar} />
