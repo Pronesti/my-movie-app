@@ -11,8 +11,9 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
+import StarIcon from '@material-ui/icons/Grade';
+import HearthIcon from '@material-ui/icons/Favorite';
+import DownloadIcon from '@material-ui/icons/GetApp';
 
 const drawerWidth = 240;
 
@@ -114,19 +115,20 @@ class PersistentDrawerLeft extends React.Component {
           <Divider />
           <List>
               <ListItem>
-                <ListItemIcon><InboxIcon /></ListItemIcon>
+                <ListItemIcon><StarIcon /></ListItemIcon>
                 <ListItemText primary={'Popular Movies'} />
+              </ListItem>
+              <ListItem>
+                <ListItemIcon><HearthIcon /></ListItemIcon>
+                <ListItemText primary={'Favorite Movies'} />
               </ListItem>
           </List>
           <Divider />
           <List>
-          <ListItem>
-                <ListItemIcon><InboxIcon /></ListItemIcon>
-                <ListItemText primary={'Popular Movies'} />
-              </ListItem>
+          
               <ListItem>
-                <ListItemIcon><InboxIcon /></ListItemIcon>
-                <ListItemText primary={'Popular Movies'} />
+                <ListItemIcon><DownloadIcon /></ListItemIcon>
+                <ListItemText primary={'Add to Home'} />
               </ListItem>
           </List>
         </Drawer>
