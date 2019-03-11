@@ -14,82 +14,82 @@ import ListItemText from '@material-ui/core/ListItemText';
 import StarIcon from '@material-ui/icons/Grade';
 import HearthIcon from '@material-ui/icons/Favorite';
 import DownloadIcon from '@material-ui/icons/GetApp';
+import { Link } from 'react-router-dom';
 
 const drawerWidth = 240;
 
 const styles = theme => ({
   root: {
-    display: 'flex',
+    display: 'flex'
   },
   appBar: {
     transition: theme.transitions.create(['margin', 'width'], {
       easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
+      duration: theme.transitions.duration.leavingScreen
+    })
   },
   appBarShift: {
     width: `calc(100% - ${drawerWidth}px)`,
     marginLeft: drawerWidth,
     transition: theme.transitions.create(['margin', 'width'], {
       easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
+      duration: theme.transitions.duration.enteringScreen
+    })
   },
   menuButton: {
     marginLeft: 12,
-    marginRight: 20,
+    marginRight: 20
   },
   hide: {
-    display: 'none',
+    display: 'none'
   },
   drawer: {
     width: drawerWidth,
-    flexShrink: 0,
+    flexShrink: 0
   },
   drawerPaper: {
-    width: drawerWidth,
+    width: drawerWidth
   },
   drawerHeader: {
     display: 'flex',
     alignItems: 'center',
     padding: '0 8px',
     ...theme.mixins.toolbar,
-    justifyContent: 'flex-end',
+    justifyContent: 'flex-end'
   },
   content: {
     flexGrow: 1,
     padding: theme.spacing.unit * 3,
     transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
+      duration: theme.transitions.duration.leavingScreen
     }),
-    marginLeft: -drawerWidth,
+    marginLeft: -drawerWidth
   },
   contentShift: {
     transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
+      duration: theme.transitions.duration.enteringScreen
     }),
-    marginLeft: 0,
-  },
+    marginLeft: 0
+  }
 });
 
 class PersistentDrawerLeft extends React.Component {
   state = {
-    open: false,
+    open: false
   };
 
   componentDidUpdate(prevProps, prevState) {
-      if (prevProps.drawer !== this.props.drawer){
-          this.setState({open: this.props.drawer});
-      }
+    if (prevProps.drawer !== this.props.drawer) {
+      this.setState({ open: this.props.drawer });
+    }
   }
 
   handleDrawerClose = () => {
     this.setState({ open: false });
     this.props.closeDrawer();
   };
-
 
   render() {
     const { classes, theme } = this.props;
@@ -100,36 +100,48 @@ class PersistentDrawerLeft extends React.Component {
         <CssBaseline />
         <Drawer
           className={classes.drawer}
-          variant="persistent"
-          anchor="left"
+          variant='persistent'
+          anchor='left'
           open={open}
           classes={{
-            paper: classes.drawerPaper,
-          }}
-        >
+            paper: classes.drawerPaper
+          }}>
           <div className={classes.drawerHeader}>
             <IconButton onClick={this.handleDrawerClose}>
-              {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+              {theme.direction === 'ltr' ? (
+                <ChevronLeftIcon />
+              ) : (
+                <ChevronRightIcon />
+              )}
             </IconButton>
           </div>
           <Divider />
           <List>
-              <ListItem>
-                <ListItemIcon><StarIcon /></ListItemIcon>
+            <ListItem>
+              <ListItemIcon>
+                <StarIcon />
+              </ListItemIcon>
+              <Link to='/' style={{ textDecoration: 'none' }}>
                 <ListItemText primary={'Popular Movies'} />
-              </ListItem>
-              <ListItem>
-                <ListItemIcon><HearthIcon /></ListItemIcon>
+              </Link>
+            </ListItem>
+            <ListItem>
+              <ListItemIcon>
+                <HearthIcon />
+              </ListItemIcon>
+              <Link to='/favorites' style={{ textDecoration: 'none' }}>
                 <ListItemText primary={'Favorite Movies'} />
-              </ListItem>
+              </Link>
+            </ListItem>
           </List>
           <Divider />
           <List>
-          
-              <ListItem>
-                <ListItemIcon><DownloadIcon /></ListItemIcon>
-                <ListItemText primary={'Add to Home'} />
-              </ListItem>
+            <ListItem>
+              <ListItemIcon>
+                <DownloadIcon />
+              </ListItemIcon>
+              <ListItemText primary={'Add to Home'} />
+            </ListItem>
           </List>
         </Drawer>
       </div>
@@ -139,7 +151,7 @@ class PersistentDrawerLeft extends React.Component {
 
 PersistentDrawerLeft.propTypes = {
   classes: PropTypes.object.isRequired,
-  theme: PropTypes.object.isRequired,
+  theme: PropTypes.object.isRequired
 };
 
 export default withStyles(styles, { withTheme: true })(PersistentDrawerLeft);
