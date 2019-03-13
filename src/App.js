@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import Profile from './pages/Profile';
 import Favorites from './pages/Favorites';
 import FullInfo from './pages/FullInfo';
+import User from './pages/User';
 import AppBar from './components/PrimarySearchAppBar';
 import PersistentDrawerLeft from './components/PersistentDrawerLeft'; 
 import './index.css';
@@ -53,6 +54,7 @@ export default class App extends Component {
       <PersistentDrawerLeft drawer={this.state.drawer} closeDrawer={this.closeDrawer} />
       <Switch>
       <Route exact path="/" render={()=> <Home keyword={this.state.keyword} />} />
+      <Route path="/user" component={User} />
       <Route path="/movie/:id" component={FullInfo} />
       <Route path="/profile" component={Profile} />
       <Route path="/favorites" component={Favorites} />
